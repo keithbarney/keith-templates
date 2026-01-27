@@ -1,0 +1,72 @@
+/*
+ * Base Styles
+ * Global resets and defaults
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: var(--keith-font-size-body);
+  line-height: 1.5;
+  color: var(--keith-ui-text-default);
+  background-color: var(--keith-ui-bg-default);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--keith-ui-text-strong);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--keith-ui-action-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--keith-ui-action-primary-hover);
+}
+
+/* Utility: max line length for readability */
+.prose {
+  max-width: 65ch;
+}

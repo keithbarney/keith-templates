@@ -1,0 +1,121 @@
+/*
+ * Navigation
+ * Minimal, monospaced navigation patterns
+ */
+
+/* Horizontal nav */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--keith-gap-lg);
+}
+
+.nav-link {
+  font-family: ui-monospace, monospace;
+  font-size: var(--keith-font-size-sm);
+  color: var(--keith-ui-text-default);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--keith-ui-text-strong);
+}
+
+.nav-link--active {
+  color: var(--keith-ui-text-strong);
+  font-weight: 600;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--keith-padding-md) 0;
+  border-bottom: 1px solid var(--keith-ui-border-default);
+}
+
+.header-brand {
+  font-family: ui-monospace, monospace;
+  font-size: var(--keith-font-size-sm);
+  font-weight: 600;
+  color: var(--keith-ui-text-strong);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--keith-gap-sm);
+  font-family: ui-monospace, monospace;
+  font-size: var(--keith-font-size-sm);
+}
+
+.breadcrumbs-separator {
+  color: var(--keith-ui-text-disabled);
+}
+
+.breadcrumbs-link {
+  color: var(--keith-ui-text-default);
+  text-decoration: none;
+}
+
+.breadcrumbs-link:hover {
+  color: var(--keith-ui-text-strong);
+}
+
+.breadcrumbs-current {
+  color: var(--keith-ui-text-strong);
+}
+
+/* Vertical nav / sidebar */
+.nav-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: var(--keith-gap-xs);
+}
+
+.nav-vertical .nav-link {
+  display: block;
+  padding: var(--keith-padding-sm) var(--keith-padding-md);
+  border-radius: var(--keith-container-sm);
+}
+
+.nav-vertical .nav-link:hover {
+  background: var(--keith-ui-bg-default);
+}
+
+.nav-vertical .nav-link--active {
+  background: var(--keith-ui-bg-default);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--keith-ui-border-default);
+}
+
+.tab {
+  padding: var(--keith-padding-sm) var(--keith-padding-md);
+  font-family: ui-monospace, monospace;
+  font-size: var(--keith-font-size-sm);
+  color: var(--keith-ui-text-default);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.tab:hover {
+  color: var(--keith-ui-text-strong);
+}
+
+.tab--active {
+  color: var(--keith-ui-text-strong);
+  border-bottom-color: var(--keith-ui-action-primary);
+}

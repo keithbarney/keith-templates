@@ -1,0 +1,82 @@
+/*
+ * Button Component
+ * Primary, secondary, and ghost variants
+ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--keith-gap-xs);
+  padding: var(--keith-padding-sm) var(--keith-padding-md);
+  font-size: var(--keith-font-size-body);
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--keith-container-sm);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--keith-ui-action-primary);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Primary */
+.btn--primary {
+  background: var(--keith-ui-action-primary);
+  color: white;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--keith-ui-action-primary-hover);
+}
+
+.btn--primary:active:not(:disabled) {
+  background: var(--keith-ui-action-primary-active);
+}
+
+/* Secondary */
+.btn--secondary {
+  background: transparent;
+  border-color: var(--keith-ui-border-strong);
+  color: var(--keith-ui-text-strong);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: var(--keith-ui-bg-default);
+}
+
+/* Ghost */
+.btn--ghost {
+  background: transparent;
+  color: var(--keith-ui-text-default);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background: var(--keith-ui-bg-default);
+  color: var(--keith-ui-text-strong);
+}
+
+/* Sizes */
+.btn--sm {
+  padding: var(--keith-padding-xs) var(--keith-padding-sm);
+  font-size: var(--keith-font-size-sm);
+}
+
+.btn--lg {
+  padding: var(--keith-padding-md) var(--keith-padding-lg);
+  font-size: var(--keith-font-size-lg);
+}
+
+/* Full width */
+.btn--block {
+  width: 100%;
+}

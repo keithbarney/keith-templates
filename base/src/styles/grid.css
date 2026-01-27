@@ -1,0 +1,89 @@
+/*
+ * Grid System
+ * 12-column layout with responsive breakpoints
+ */
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--keith-padding-md);
+}
+
+@media (min-width: 576px) {
+  .container { max-width: 540px; }
+}
+
+@media (min-width: 768px) {
+  .container { max-width: 720px; }
+}
+
+@media (min-width: 992px) {
+  .container { max-width: 960px; }
+}
+
+@media (min-width: 1200px) {
+  .container { max-width: 1140px; }
+}
+
+@media (min-width: 1400px) {
+  .container { max-width: 1320px; }
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: var(--keith-gap-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(12, 1fr); }
+}
+
+/* Column spans */
+.col-1 { grid-column: span 1; }
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+.col-5 { grid-column: span 5; }
+.col-6 { grid-column: span 6; }
+.col-7 { grid-column: span 7; }
+.col-8 { grid-column: span 8; }
+.col-9 { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+/* Full width on mobile */
+@media (max-width: 767px) {
+  [class*="col-"] {
+    grid-column: span 1;
+  }
+}
+
+/* Common patterns */
+.grid-2 {
+  display: grid;
+  gap: var(--keith-gap-md);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  display: grid;
+  gap: var(--keith-gap-md);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  display: grid;
+  gap: var(--keith-gap-md);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 767px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}

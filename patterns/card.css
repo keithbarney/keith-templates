@@ -1,0 +1,58 @@
+/*
+ * Card Component
+ * Surface container with optional header, body, footer
+ */
+
+.card {
+  background: var(--keith-ui-surface-default);
+  border: 1px solid var(--keith-ui-border-default);
+  border-radius: var(--keith-container-md);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: var(--keith-padding-md);
+  border-bottom: 1px solid var(--keith-ui-border-default);
+}
+
+.card-body {
+  padding: var(--keith-padding-md);
+}
+
+.card-footer {
+  padding: var(--keith-padding-md);
+  border-top: 1px solid var(--keith-ui-border-default);
+}
+
+.card-title {
+  font-size: var(--keith-font-size-lg);
+  font-weight: 600;
+  color: var(--keith-ui-text-strong);
+  margin: 0;
+}
+
+.card-subtitle {
+  font-size: var(--keith-font-size-sm);
+  color: var(--keith-ui-text-default);
+  margin-top: var(--keith-gap-xs);
+}
+
+/* Variants */
+.card--flush {
+  border-radius: 0;
+}
+
+.card--elevated {
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.card--interactive {
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.card--interactive:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}

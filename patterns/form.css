@@ -1,0 +1,95 @@
+/*
+ * Form Elements
+ * Inputs, labels, and form groups
+ */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--keith-gap-xs);
+}
+
+.form-label {
+  font-size: var(--keith-font-size-sm);
+  font-weight: 500;
+  color: var(--keith-ui-text-strong);
+}
+
+.form-label--required::after {
+  content: " *";
+  color: var(--keith-ui-feedback-danger);
+}
+
+.form-input {
+  padding: var(--keith-padding-sm) var(--keith-padding-md);
+  font-size: var(--keith-font-size-body);
+  color: var(--keith-ui-text-strong);
+  background: var(--keith-ui-surface-default);
+  border: 1px solid var(--keith-ui-border-default);
+  border-radius: var(--keith-container-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-input::placeholder {
+  color: var(--keith-ui-text-disabled);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--keith-ui-action-primary);
+  box-shadow: 0 0 0 3px rgba(var(--keith-ui-action-primary), 0.1);
+}
+
+.form-input:disabled {
+  background: var(--keith-ui-bg-default);
+  color: var(--keith-ui-text-disabled);
+  cursor: not-allowed;
+}
+
+/* Textarea */
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Select */
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--keith-padding-sm) center;
+  padding-right: var(--keith-padding-xl);
+}
+
+/* States */
+.form-input--error {
+  border-color: var(--keith-ui-feedback-danger);
+}
+
+.form-input--success {
+  border-color: var(--keith-ui-feedback-success);
+}
+
+/* Helper text */
+.form-hint {
+  font-size: var(--keith-font-size-sm);
+  color: var(--keith-ui-text-default);
+}
+
+.form-error {
+  font-size: var(--keith-font-size-sm);
+  color: var(--keith-ui-feedback-danger);
+}
+
+/* Checkbox / Radio */
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: var(--keith-gap-sm);
+}
+
+.form-check-input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--keith-ui-action-primary);
+}

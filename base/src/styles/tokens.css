@@ -1,0 +1,66 @@
+/*
+ * Project Alias Tokens
+ * Reference base tokens from ~/Projects/tokens/
+ *
+ * Naming: [project].[category].[group].[variant]
+ * CSS output: dots become hyphens, prefixed with --
+ */
+
+:root {
+  /* UI Colors */
+  --keith-ui-bg-default: var(--base-color-neutral-50);
+  --keith-ui-surface-default: var(--base-color-neutral-0);
+  --keith-ui-text-default: var(--base-color-neutral-700);
+  --keith-ui-text-strong: var(--base-color-neutral-900);
+  --keith-ui-text-disabled: var(--base-color-neutral-400);
+  --keith-ui-border-default: var(--base-color-neutral-200);
+  --keith-ui-border-strong: var(--base-color-neutral-400);
+
+  /* Action Colors */
+  --keith-ui-action-primary: var(--base-color-accent-500);
+  --keith-ui-action-primary-hover: var(--base-color-accent-600);
+  --keith-ui-action-primary-active: var(--base-color-accent-700);
+
+  /* Feedback Colors */
+  --keith-ui-feedback-success: var(--base-color-green-500);
+  --keith-ui-feedback-warning: var(--base-color-amber-500);
+  --keith-ui-feedback-danger: var(--base-color-red-500);
+  --keith-ui-feedback-info: var(--base-color-blue-500);
+
+  /* Spacing */
+  --keith-gap-none: 0;
+  --keith-gap-xs: var(--base-spacing-1);
+  --keith-gap-sm: var(--base-spacing-2);
+  --keith-gap-md: var(--base-spacing-4);
+  --keith-gap-lg: var(--base-spacing-6);
+  --keith-gap-xl: var(--base-spacing-8);
+  --keith-gap-2xl: var(--base-spacing-12);
+  --keith-gap-3xl: var(--base-spacing-16);
+  --keith-gap-4xl: var(--base-spacing-24);
+
+  /* Padding */
+  --keith-padding-none: 0;
+  --keith-padding-xs: var(--base-spacing-1);
+  --keith-padding-sm: var(--base-spacing-2);
+  --keith-padding-md: var(--base-spacing-4);
+  --keith-padding-lg: var(--base-spacing-6);
+  --keith-padding-xl: var(--base-spacing-8);
+  --keith-padding-2xl: var(--base-spacing-12);
+
+  /* Container / Radius */
+  --keith-container-none: 0;
+  --keith-container-sm: var(--base-radius-sm);
+  --keith-container-md: var(--base-radius-md);
+  --keith-container-lg: var(--base-radius-lg);
+  --keith-container-full: 9999px;
+
+  /* Typography */
+  --keith-font-size-xs: var(--base-font-size-xs);
+  --keith-font-size-sm: var(--base-font-size-sm);
+  --keith-font-size-body: var(--base-font-size-base);
+  --keith-font-size-lg: var(--base-font-size-lg);
+  --keith-font-size-xl: var(--base-font-size-xl);
+  --keith-font-size-2xl: var(--base-font-size-2xl);
+  --keith-font-size-3xl: var(--base-font-size-3xl);
+  --keith-font-size-4xl: var(--base-font-size-4xl);
+}
