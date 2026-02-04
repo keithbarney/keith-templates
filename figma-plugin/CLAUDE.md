@@ -42,6 +42,12 @@
 
 ---
 
+## Build Target
+
+esbuild uses `--target=es6` because Figma's plugin sandbox doesn't support ES2020+ syntax (e.g., `??`, `?.`). Write modern TypeScript freely — esbuild transpiles it down automatically.
+
+---
+
 ## Key Files
 
 ### code.ts
