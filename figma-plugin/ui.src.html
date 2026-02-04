@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- HEAVY_THEME -->
+  <style>
+    /* Plugin-specific styles go here */
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <h1>{{PLUGIN_NAME}}</h1>
+  </div>
+
+  <!-- Content -->
+  <div class="results" id="content">
+    <h2>Results</h2>
+    <p class="status" id="status">Select layers to get started</p>
+  </div>
+
+  <!-- Actions -->
+  <div class="actions">
+    <button class="btn-secondary" id="cancel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Cancel</button>
+    <button class="btn-primary" id="run"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>Run</button>
+  </div>
+
+  <div class="support-link">
+    <a href="#" id="support-link">Support this plugin &#9829;</a>
+  </div>
+
+  <script>
+    const SUPPORT_URL = 'https://heavy.lemonsqueezy.com';
+    const runBtn = document.getElementById('run');
+    const cancelBtn = document.getElementById('cancel');
+    const status = document.getElementById('status');
+
+    // Handle messages from plugin code
+    window.onmessage = (event) => {
+      const msg = event.data.pluginMessage;
+      if (!msg) return;
+
+      switch (msg.type) {
+        case 'result':
+          status.textContent = msg.message || 'Done';
+          break;
+        case 'error':
+          status.textContent = msg.message;
+          status.classList.add('error');
+          break;
+      }
+    };
+
+    runBtn.addEventListener('click', () => {
+      parent.postMessage({ pluginMessage: { type: 'run' } }, '*');
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      parent.postMessage({ pluginMessage: { type: 'close' } }, '*');
+    });
+
+    document.getElementById('support-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      parent.postMessage({ pluginMessage: { type: 'open-url', url: SUPPORT_URL } }, '*');
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') runBtn.click();
+      if (e.key === 'Escape') cancelBtn.click();
+    });
+  </script>
+</body>
+</html>
