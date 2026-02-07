@@ -31,6 +31,8 @@
 | `npm run dev` | Build UI + watch mode for code |
 | `npm run typecheck` | Check TypeScript types |
 
+**Note:** `/commit-push-pr` auto-runs `npm run build` + `npm run typecheck` before staging. No need to build manually before committing.
+
 ---
 
 ## Development Workflow

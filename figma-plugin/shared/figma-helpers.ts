@@ -40,8 +40,8 @@ export function traverse(
   callback: (node: SceneNode) => void | boolean
 ): void {
   if ('children' in node) {
-    for (const child of node.children) {
-      const result = callback(child);
+    for (const child of (node as BaseNode & ChildrenMixin).children) {
+      const result = callback(child as SceneNode);
       if (result !== false) {
         traverse(child, callback);
       }
@@ -112,7 +112,7 @@ export function cloneNode<T extends SceneNode>(
   if (parent && 'appendChild' in parent) {
     parent.appendChild(clone);
   }
-  return clone;
+  return clone as T;
 }
 
 /** Check if node supports children */

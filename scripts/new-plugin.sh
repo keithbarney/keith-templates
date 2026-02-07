@@ -55,11 +55,14 @@ fi
 # Create dist directory
 mkdir -p "$TARGET_DIR/dist"
 
-# Initialize git (optional)
+# Replace heavy-theme.css copy with symlink to template source
+rm "$TARGET_DIR/heavy-theme.css"
+ln -s "../keith-templates/figma-plugin/heavy-theme.css" "$TARGET_DIR/heavy-theme.css"
+
+# Initialize git (Figma plugins track dist/ — do NOT gitignore it)
 cd "$TARGET_DIR"
 git init -q
 echo "node_modules/" >> .gitignore
-echo "dist/" >> .gitignore
 
 echo ""
 echo "Done! Next steps:"
