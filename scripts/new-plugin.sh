@@ -17,7 +17,7 @@ DESCRIPTION="${3:-A Figma plugin}"
 # Generate plugin ID (random)
 PLUGIN_ID=$(uuidgen | tr '[:upper:]' '[:lower:]' | cut -d'-' -f1-2)
 
-TARGET_DIR="$PROJECTS_DIR/$SLUG"
+TARGET_DIR="$PROJECTS_DIR/figma-plugins/$SLUG"
 
 # Check if target exists
 if [ -d "$TARGET_DIR" ]; then
@@ -57,7 +57,7 @@ mkdir -p "$TARGET_DIR/dist"
 
 # Replace heavy-theme.css copy with symlink to template source
 rm "$TARGET_DIR/heavy-theme.css"
-ln -s "../keith-templates/figma-plugin/heavy-theme.css" "$TARGET_DIR/heavy-theme.css"
+ln -s "../../keith-templates/figma-plugin/heavy-theme.css" "$TARGET_DIR/heavy-theme.css"
 
 # Initialize git (Figma plugins track dist/ — do NOT gitignore it)
 cd "$TARGET_DIR"

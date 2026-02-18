@@ -14,7 +14,7 @@ SLUG="${1:-my-app}"
 NAME="${2:-My App}"
 DESCRIPTION="${3:-A web application}"
 
-TARGET_DIR="$PROJECTS_DIR/$SLUG"
+TARGET_DIR="$PROJECTS_DIR/../apps/$SLUG"
 
 # Check if target exists
 if [ -d "$TARGET_DIR" ]; then

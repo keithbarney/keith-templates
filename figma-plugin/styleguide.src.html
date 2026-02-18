@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heavy Theme — Styleguide</title>
+  <link rel="stylesheet" href="heavy-theme.css">
+  <style>
+    /* ================================================================
+       STYLEGUIDE OVERRIDES
+       Override body to work as a scrollable browser page
+       ================================================================ */
+
+    body {
+      display: block;
+      margin: 0;
+      padding: 48px 32px 48px 220px;
+      background: var(--color-bg);
+    }
+
+    /* ================================================================
+       LEFT NAV
+       ================================================================ */
+
+    .sg-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 188px;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 48px 0 48px 24px;
+      background: var(--color-surface);
+      border-right: 1px solid var(--color-border);
+      z-index: 10;
+    }
+
+    .sg-nav-title {
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .sg-nav a {
+      display: block;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+      text-decoration: none;
+      padding: 4px 0;
+      transition: color var(--transition);
+    }
+
+    .sg-nav a:hover {
+      color: var(--color-text-strong);
+    }
+
+    /* ================================================================
+       STYLEGUIDE LAYOUT (sg- prefix)
+       ================================================================ */
+
+    .sg-header {
+      margin-bottom: 48px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 24px;
+    }
+
+    .sg-header h1 {
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .sg-header p {
+      color: var(--color-text-muted);
+      font-size: var(--font-size-sm);
+    }
+
+    .sg-section {
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .sg-section:last-child {
+      border-bottom: none;
+    }
+
+    .sg-title {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+
+    .sg-subtitle {
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      margin-top: 24px;
+    }
+
+    .sg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .sg-swatch {
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .sg-swatch-color {
+      height: 48px;
+    }
+
+    .sg-swatch-info {
+      padding: 8px 10px;
+    }
+
+    .sg-swatch-name {
+      font-size: 10px;
+      color: var(--color-text);
+      margin-bottom: 2px;
+    }
+
+    .sg-swatch-value {
+      font-size: 10px;
+      color: var(--color-text-muted);
+    }
+
+    .sg-spacing-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .sg-spacing-bar-label {
+      font-size: 10px;
+      color: var(--color-text-muted);
+      width: 80px;
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    .sg-spacing-bar-visual {
+      height: 12px;
+      background: var(--color-accent);
+      border-radius: 2px;
+      opacity: 0.6;
+    }
+
+    .sg-spacing-bar-value {
+      font-size: 10px;
+      color: var(--color-text-muted);
+      width: 40px;
+      flex-shrink: 0;
+    }
+
+    .sg-example {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+
+    .sg-code {
+      font-size: 10px;
+      color: var(--color-text-muted);
+      margin-bottom: 8px;
+      font-family: var(--font-mono);
+    }
+
+    .sg-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .sg-token-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .sg-token-label {
+      font-size: 10px;
+      color: var(--color-text-muted);
+      width: 120px;
+      flex-shrink: 0;
+    }
+
+    .sg-token-value {
+      font-size: 10px;
+      color: var(--color-text);
+    }
+
+    .sg-inline-demo {
+      padding: 16px 20px;
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+    }
+
+    /* ================================================================
+       PLUGIN PATTERNS (inline — from real plugins)
+       ================================================================ */
+
+    /* Summary bar — Layer Prep / Rules Engine */
+    .summary { display: flex; gap: 1px; background: #4f5b66; border-radius: 3px; overflow: hidden; margin-bottom: 12px; }
+    .summary-item { flex: 1; background: #343d46; padding: 10px; text-align: center; }
+    .summary-value { font-size: 20px; font-weight: 700; color: #eff1f5; }
+    .summary-value.clean { color: #a3be8c; }
+    .summary-value.issues { color: #ebcb8b; }
+    .summary-label { font-size: 9px; color: #65737e; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+    /* Tabs — Rules Engine */
+    .tabs { display: flex; gap: 1px; background: #4f5b66; border-radius: 3px; overflow: hidden; margin-bottom: 12px; }
+    .tab { flex: 1; background: #343d46; padding: 8px; text-align: center; font-size: 10px; font-weight: 600; color: #65737e; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; }
+    .tab:hover { background: #3d4752; }
+    .tab.active { background: #4f5b66; color: #eff1f5; }
+
+    /* Issue groups — Layer Prep */
+    .issue-group { margin-bottom: 8px; }
+    .issue-header { display: flex; justify-content: space-between; align-items: center; padding: 8px; background: #343d46; border-radius: 3px; cursor: pointer; }
+    .issue-header:hover { background: #3d4752; }
+    .issue-title { font-size: 10px; font-weight: 600; color: #c0c5ce; text-transform: uppercase; letter-spacing: 0.03em; }
+    .issue-right { display: flex; align-items: center; gap: 8px; }
+    .issue-count { font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 8px; background: rgba(255,255,255,0.08); color: #65737e; }
+    .issue-list { padding: 4px 0; }
+    .issue-item { padding: 4px 8px; font-size: 10px; color: #65737e; border-bottom: 1px solid #343d46; }
+    .issue-item:last-child { border-bottom: none; }
+
+    /* Score colors — System Pulse */
+    .good { color: #a3be8c; }
+    .warn { color: #ebcb8b; }
+    .bad { color: #bf616a; }
+
+    /* Severity colors — Rules Engine */
+    .sev-error { color: #bf616a; }
+    .sev-warning { color: #ebcb8b; }
+    .sev-info { color: #8fa1b3; }
+
+    /* State patterns — Layer Prep */
+    .empty-state { text-align: center; padding: 32px 16px; color: #65737e; }
+    .empty-state p { margin-top: 4px; font-size: 10px; }
+    .loading { text-align: center; padding: 32px; color: #65737e; }
+    .clean-state { text-align: center; padding: 24px; color: #a3be8c; }
+    .clean-state h2 { color: #a3be8c; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       LEFT NAV
+       ============================================================ -->
+  <nav class="sg-nav">
+    <div class="sg-nav-title">Sections</div>
+    <a href="#colors">1. Color Tokens</a>
+    <a href="#typography">2. Typography & Spacing</a>
+    <a href="#type-elements">3. Typography Elements</a>
+    <a href="#buttons">4. Buttons</a>
+    <a href="#inputs">5. Inputs & Selects</a>
+    <a href="#panels">6. Panels</a>
+    <a href="#tables">7. Tables</a>
+    <a href="#lists">8. Lists</a>
+    <a href="#status">9. Status Messages</a>
+    <a href="#actions">10. Actions Bar</a>
+    <a href="#utilities">11. Utility Classes</a>
+    <a href="#patterns">12. Plugin Patterns</a>
+  </nav>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <div class="sg-header">
+    <h1>Heavy Theme — Styleguide</h1>
+    <p>Spacegray / Base16 Ocean — shared across all Heavy Figma plugins</p>
+  </div>
+
+  <!-- ============================================================
+       1. COLOR TOKENS
+       ============================================================ -->
+  <section id="colors" class="sg-section">
+    <div class="sg-title">1. Color Tokens</div>
+<!-- GENERATED_COLORS -->
+  </section>
+
+  <!-- ============================================================
+       2. TYPOGRAPHY & SPACING TOKENS
+       ============================================================ -->
+  <section id="typography" class="sg-section">
+    <div class="sg-title">2. Typography &amp; Spacing Tokens</div>
+<!-- GENERATED_TYPOGRAPHY -->
+  </section>
+
+  <!-- ============================================================
+       3. TYPOGRAPHY ELEMENTS
+       ============================================================ -->
+  <section id="type-elements" class="sg-section">
+    <div class="sg-title">3. Typography Elements</div>
+
+    <div class="sg-example">
+      <div style="margin-bottom: 16px;">
+        <div class="sg-code">h1</div>
+        <h1>Page Heading</h1>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <div class="sg-code">h2</div>
+        <h2>Section Label</h2>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <div class="sg-code">label</div>
+        <label>Form Label</label>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <div class="sg-code">body text (--color-text)</div>
+        <p>Default body text renders in the base text color for content and descriptions.</p>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <div class="sg-code">--color-text-strong</div>
+        <p style="color: var(--color-text-strong);">Strong text for emphasis, headings, and active values.</p>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <div class="sg-code">--color-text-muted</div>
+        <p style="color: var(--color-text-muted);">Muted text for secondary info, labels, and metadata.</p>
+      </div>
+      <div>
+        <div class="sg-code">--color-text-disabled</div>
+        <p style="color: var(--color-text-disabled);">Disabled text for inactive or unavailable elements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. BUTTONS
+       ============================================================ -->
+  <section id="buttons" class="sg-section">
+    <div class="sg-title">4. Buttons</div>
+
+    <div class="sg-subtitle">Variants</div>
+    <div class="sg-example">
+      <div class="sg-row" style="margin-bottom: 16px;">
+        <div>
+          <div class="sg-code">button (default)</div>
+          <button>Default</button>
+        </div>
+        <div>
+          <div class="sg-code">.btn-primary</div>
+          <button class="btn-primary">Primary</button>
+        </div>
+        <div>
+          <div class="sg-code">.btn-secondary</div>
+          <button class="btn-secondary">Secondary</button>
+        </div>
+        <div>
+          <div class="sg-code">.btn-danger</div>
+          <button class="btn-danger">Danger</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-subtitle">Disabled</div>
+    <div class="sg-example">
+      <div class="sg-row" style="margin-bottom: 16px;">
+        <div>
+          <div class="sg-code">button:disabled</div>
+          <button disabled>Default</button>
+        </div>
+        <div>
+          <div class="sg-code">.btn-primary:disabled</div>
+          <button class="btn-primary" disabled>Primary</button>
+        </div>
+        <div>
+          <div class="sg-code">.btn-secondary:disabled</div>
+          <button class="btn-secondary" disabled>Secondary</button>
+        </div>
+        <div>
+          <div class="sg-code">.btn-danger:disabled</div>
+          <button class="btn-danger" disabled>Danger</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-subtitle">With Icons (Lucide SVG)</div>
+    <div class="sg-example">
+      <div class="sg-row">
+        <div>
+          <div class="sg-code">button + svg</div>
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            Export
+          </button>
+        </div>
+        <div>
+          <div class="sg-code">.btn-primary + svg</div>
+          <button class="btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Apply
+          </button>
+        </div>
+        <div>
+          <div class="sg-code">.btn-danger + svg</div>
+          <button class="btn-danger">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. INPUTS & SELECTS
+       ============================================================ -->
+  <section id="inputs" class="sg-section">
+    <div class="sg-title">5. Inputs &amp; Selects</div>
+
+    <div class="sg-example">
+      <div class="sg-row" style="align-items: stretch;">
+        <div style="flex: 1;">
+          <div class="form-group">
+            <label>Text Input</label>
+            <input type="text" value="Layer name">
+          </div>
+          <div class="form-group">
+            <label>With Placeholder</label>
+            <input type="text" placeholder="Search layers...">
+          </div>
+          <div class="form-group">
+            <label>Disabled Input</label>
+            <input type="text" value="Cannot edit" disabled>
+          </div>
+        </div>
+        <div style="flex: 1;">
+          <div class="form-group">
+            <label>Number Input</label>
+            <input type="number" value="100">
+          </div>
+          <div class="form-group">
+            <label>Select Dropdown</label>
+            <select style="width: 100%;">
+              <option>All layers</option>
+              <option>Frames only</option>
+              <option>Components only</option>
+              <option>Text layers</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Disabled Select</label>
+            <select style="width: 100%;" disabled>
+              <option>Unavailable</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. PANELS
+       ============================================================ -->
+  <section id="panels" class="sg-section">
+    <div class="sg-title">6. Panels</div>
+
+    <div class="sg-subtitle">.results</div>
+    <div class="sg-example">
+      <div class="results" style="height: auto; min-height: 80px;">
+        <p>Results panel — used for scrollable content areas. Displays search results, analysis output, or any list of items.</p>
+      </div>
+    </div>
+
+    <div class="sg-subtitle">.preview</div>
+    <div class="sg-example">
+      <div class="preview" style="height: auto; min-height: 80px;">
+        <p>Preview panel — used for content previews. Shows documentation output, formatted text, or visual previews.</p>
+      </div>
+    </div>
+
+    <div class="sg-subtitle">.preview.empty</div>
+    <div class="sg-example">
+      <div class="preview empty" style="height: 80px;">
+        Select a layer to preview
+      </div>
+    </div>
+
+    <div class="sg-subtitle">.preview.error</div>
+    <div class="sg-example">
+      <div class="preview error" style="height: auto; min-height: 80px;">
+        Error: Could not parse the selected layer. Check that it contains valid content.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. TABLES
+       ============================================================ -->
+  <section id="tables" class="sg-section">
+    <div class="sg-title">7. Tables</div>
+
+    <div class="sg-example">
+      <table>
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Issues</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Header / Logo</td>
+            <td>FRAME</td>
+            <td style="color: var(--color-success);">Clean</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Card / Product-01</td>
+            <td>COMPONENT</td>
+            <td style="color: #ebcb8b;">Warning</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Button / CTA</td>
+            <td>INSTANCE</td>
+            <td style="color: var(--color-danger);">Error</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>Nav / Desktop</td>
+            <td>FRAME</td>
+            <td style="color: var(--color-success);">Clean</td>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. LISTS
+       ============================================================ -->
+  <section id="lists" class="sg-section">
+    <div class="sg-title">8. Lists</div>
+
+    <div class="sg-code">.match-list</div>
+    <div class="sg-example">
+      <ul class="match-list">
+        <li>Header / Logo / Icon-brand</li>
+        <li>Card / Product-01 / Image-container</li>
+        <li>Card / Product-01 / Price-label</li>
+        <li>Footer / Social / Icon-twitter</li>
+        <li>Nav / Desktop / Menu-item-3</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9. STATUS MESSAGES
+       ============================================================ -->
+  <section id="status" class="sg-section">
+    <div class="sg-title">9. Status Messages</div>
+
+    <div class="sg-example">
+      <div style="margin-bottom: 16px;">
+        <div class="sg-code">.status</div>
+        <div class="status" style="display: block;">Scanning 142 layers...</div>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <div class="sg-code">.status.success</div>
+        <div class="status success" style="display: block;">Done — 3 issues fixed</div>
+      </div>
+      <div>
+        <div class="sg-code">.status.error</div>
+        <div class="status error" style="display: block;">Failed — no layers selected</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       10. ACTIONS BAR
+       ============================================================ -->
+  <section id="actions" class="sg-section">
+    <div class="sg-title">10. Actions Bar</div>
+
+    <div class="sg-code">.actions</div>
+    <div class="sg-example">
+      <div class="actions" style="margin-top: 0;">
+        <button class="btn-secondary">Cancel</button>
+        <button class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Apply Changes
+        </button>
+      </div>
+    </div>
+
+    <div class="sg-code">.actions (3 buttons)</div>
+    <div class="sg-example">
+      <div class="actions" style="margin-top: 0;">
+        <button class="btn-secondary">Reset</button>
+        <button class="btn-danger">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+          Delete
+        </button>
+        <button class="btn-primary">Save</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       11. UTILITY CLASSES
+       ============================================================ -->
+  <section id="utilities" class="sg-section">
+    <div class="sg-title">11. Utility Classes</div>
+
+    <div class="sg-subtitle">.filename</div>
+    <div class="sg-example">
+      <span class="filename">manifest.json</span>
+      &nbsp;&nbsp;
+      <span class="filename">code.ts</span>
+      &nbsp;&nbsp;
+      <span class="filename">ui.src.html</span>
+    </div>
+
+    <div class="sg-subtitle">.color-swatch + .hex-cell</div>
+    <div class="sg-example">
+      <div class="hex-cell" style="margin-bottom: 8px;">
+        <span class="color-swatch" style="background: #8fa1b3;"></span>
+        <span>#8fa1b3</span>
+      </div>
+      <div class="hex-cell" style="margin-bottom: 8px;">
+        <span class="color-swatch" style="background: #a3be8c;"></span>
+        <span>#a3be8c</span>
+      </div>
+      <div class="hex-cell">
+        <span class="color-swatch" style="background: #bf616a;"></span>
+        <span>#bf616a</span>
+      </div>
+    </div>
+
+    <div class="sg-subtitle">.support-link</div>
+    <div class="sg-example">
+      <div class="support-link" style="margin-top: 0;">
+        <a href="#">Made by Heavy — Report an issue</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       12. PLUGIN PATTERNS
+       ============================================================ -->
+  <section id="patterns" class="sg-section">
+    <div class="sg-title">12. Plugin Patterns</div>
+
+    <div class="sg-subtitle">Summary Bar — .summary + .summary-item</div>
+    <div class="sg-example">
+      <div class="summary">
+        <div class="summary-item">
+          <div class="summary-value">142</div>
+          <div class="summary-label">Layers</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value clean">98</div>
+          <div class="summary-label">Clean</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value issues">37</div>
+          <div class="summary-label">Issues</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value">7</div>
+          <div class="summary-label">Skipped</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-subtitle">Tabs — .tabs + .tab</div>
+    <div class="sg-example">
+      <div class="tabs">
+        <div class="tab active">Overview</div>
+        <div class="tab">Issues</div>
+        <div class="tab">Settings</div>
+      </div>
+    </div>
+
+    <div class="sg-subtitle">Issue Groups — .issue-group (collapsible)</div>
+    <div class="sg-example">
+      <div class="issue-group">
+        <div class="issue-header">
+          <div class="issue-title">Missing descriptions</div>
+          <div class="issue-right">
+            <span class="issue-count">12</span>
+          </div>
+        </div>
+        <div class="issue-list">
+          <div class="issue-item">Card / Product-01 — no description set</div>
+          <div class="issue-item">Card / Product-02 — no description set</div>
+          <div class="issue-item">Button / CTA — no description set</div>
+        </div>
+      </div>
+      <div class="issue-group">
+        <div class="issue-header">
+          <div class="issue-title">Unnamed layers</div>
+          <div class="issue-right">
+            <span class="issue-count">5</span>
+          </div>
+        </div>
+        <div class="issue-list">
+          <div class="issue-item">Frame 47 — default name</div>
+          <div class="issue-item">Rectangle 12 — default name</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-subtitle">Score Colors — .good / .warn / .bad</div>
+    <div class="sg-example">
+      <div class="sg-row" style="gap: 24px;">
+        <div>
+          <div class="sg-code">.good</div>
+          <span class="good" style="font-size: 20px; font-weight: 700;">92</span>
+        </div>
+        <div>
+          <div class="sg-code">.warn</div>
+          <span class="warn" style="font-size: 20px; font-weight: 700;">64</span>
+        </div>
+        <div>
+          <div class="sg-code">.bad</div>
+          <span class="bad" style="font-size: 20px; font-weight: 700;">23</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-subtitle">Severity Colors — .sev-error / .sev-warning / .sev-info</div>
+    <div class="sg-example">
+      <div style="margin-bottom: 6px;">
+        <span class="sev-error">&#9679;</span>&nbsp; <span class="sev-error">Error:</span> Component has no variants defined
+      </div>
+      <div style="margin-bottom: 6px;">
+        <span class="sev-warning">&#9679;</span>&nbsp; <span class="sev-warning">Warning:</span> Layer name uses default naming
+      </div>
+      <div>
+        <span class="sev-info">&#9679;</span>&nbsp; <span class="sev-info">Info:</span> Auto-layout could be applied here
+      </div>
+    </div>
+
+    <div class="sg-subtitle">State Patterns</div>
+    <div class="sg-example">
+      <div class="sg-code">.empty-state</div>
+      <div class="empty-state">
+        <h2>No layers selected</h2>
+        <p>Select one or more layers in Figma to get started.</p>
+      </div>
+    </div>
+    <div class="sg-example">
+      <div class="sg-code">.loading</div>
+      <div class="loading">
+        Analyzing 142 layers...
+      </div>
+    </div>
+    <div class="sg-example">
+      <div class="sg-code">.clean-state</div>
+      <div class="clean-state">
+        <h2>All clean!</h2>
+        <p style="color: #65737e; font-size: 10px; margin-top: 4px;">No issues found in the selected layers.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

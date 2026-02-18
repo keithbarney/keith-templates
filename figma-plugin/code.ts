@@ -76,7 +76,13 @@ const handleMessage = createMessageHandler({
   },
 });
 
-figma.ui.onmessage = handleMessage;
+figma.ui.onmessage = (msg: any) => {
+  if (msg?.type === 'resize') {
+    figma.ui.resize(UI_WIDTH, msg.height);
+    return;
+  }
+  handleMessage(msg);
+};
 
 // ============================================================================
 // SELECTION CHANGE LISTENER (optional)

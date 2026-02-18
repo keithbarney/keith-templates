@@ -8,7 +8,8 @@
     "build": "npm run build:ui && npm run build:code",
     "dev:code": "esbuild code.ts --bundle --target=es6 --outfile=dist/code.js --watch",
     "dev": "npm run build:ui && npm run dev:code",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:styleguide": "node build-styleguide.js"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.98.0",

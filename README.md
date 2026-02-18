@@ -9,8 +9,8 @@ Project scaffolds and reusable patterns for the Keith Design System.
 git clone https://github.com/yourusername/keith-templates.git ~/Projects/keith-templates
 
 # Start a new project
-cp -r ~/Projects/keith-templates/base ~/Projects/new-project-name
-cd ~/Projects/new-project-name
+cp -r ~/Projects/design/keith-templates/base ~/Projects/new-project-name
+cd ~/Projects/apps/new-project-name
 npm install
 npm run dev
 ```
@@ -45,14 +45,14 @@ Reusable CSS components:
 Copy patterns into your project as needed:
 
 ```bash
-cp ~/Projects/keith-templates/patterns/card.css ./src/styles/components/
+cp ~/Projects/design/keith-templates/patterns/card.css ./src/styles/components/
 ```
 
 Or import directly if you prefer referencing the source.
 
 ## Related
 
-- [keith-design-system](https://github.com/yourusername/keith-design-system) — Core design system
+- [heavy-design-system](https://github.com/yourusername/heavy-design-system) — Core design system
 - [keith-barney-portfolio](https://github.com/yourusername/keith-barney-portfolio) — Portfolio site
 
 ## License

@@ -9,7 +9,7 @@ Centralized templates for Figma plugins and web apps.
 ### New Figma Plugin
 ```bash
 ./scripts/new-plugin.sh heavy-awesome "Heavy Awesome" "Does awesome things"
-cd ~/Projects/heavy-awesome && npm install && npm run dev
+cd ~/Projects/design/figma-plugins/heavy-awesome && npm install && npm run dev
 ```
 
 ### New Web App
@@ -90,11 +90,11 @@ Dieter Rams, Müller-Brockmann, Bauhaus, airport displays, cockpit instrumentati
 
 ## Design Tokens
 
-Base tokens live at `~/Projects/tokens/`. Created in Figma, exported as JSON following the W3C DTCG spec.
+Base tokens live at `~/Projects/design/tokens/`. Created in Figma, exported as JSON following the W3C DTCG spec.
 
 ### Token Architecture
 
-1. **Base tokens** — Raw values in `~/Projects/tokens/*.json`
+1. **Base tokens** — Raw values in `~/Projects/design/tokens/*.json`
 2. **Alias tokens** — Project-specific semantic references
 3. **CSS output** — Compiled custom properties
 
