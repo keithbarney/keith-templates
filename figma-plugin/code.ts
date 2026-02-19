@@ -105,10 +105,10 @@ function processSelection(nodes: readonly SceneNode[]): unknown {
   const counts: Record<string, number> = {};
 
   for (const node of nodes) {
+    counts[node.type] = (counts[node.type] || 0) + 1;
     traverse(node, (child) => {
       counts[child.type] = (counts[child.type] || 0) + 1;
     });
-    counts[node.type] = (counts[node.type] || 0) + 1;
   }
 
   return counts;
